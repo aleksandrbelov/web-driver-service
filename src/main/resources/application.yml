@@ -1,0 +1,20 @@
+spring:
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+      group-id: web-driver-service
+    producer:
+      value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
+      key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
+      properties:
+        max.request.size: 20971520
+    bootstrap-servers: ${BOOTSTRAP_SERVERS:127.0.0.1:57235, 127.0.0.1:57238}
+webdriver:
+  location: "/usr/lib/chromium/chromedriver"
+  options:
+    - "--headless"
+    - "--no-sandbox"
+    - "--disable-dev-shm-usage"
+    - "--disable-gpu"
+    - "--disable-extensions"
+    - "disable-infobars"
